@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/vqfnYFf/office.jpg",
+      "estate_title": "Modern Office Space in Downtown",
+      "segment_name": "Office Buildings",
+      "description": "A sleek and modern office space located in the heart of downtown. This office building features open floor plans, ample natural light, and state-of-the-art facilities, making it an ideal workspace for businesses seeking a prestigious address and a productive environment. With a strategic location in the bustling city center, this office space offers convenience and accessibility for employees and clients alike.",
+      "price": "$5,000/month",
+      "status": "Rent",
+      "area": "2000 sq ft",
+      "location": "123 Main Street, Suite 100, New York City",
+      "facilities": ["High-speed internet", "Meeting rooms", "Parking"]
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/B2KZpQY/retail-store.jpg",
+      "estate_title": "Retail Storefront on Main Street",
+      "segment_name": "Retail Spaces",
+      "description": "Prime retail space available on bustling Main Street. This retail space offers a highly visible storefront, ideal for businesses looking to attract foot traffic and showcase their products or services. With its strategic location in the heart of the city's commercial district, this retail space presents an excellent opportunity for retail entrepreneurs seeking a vibrant and dynamic environment to grow their business.",
+      "price": "$10,000/month",
+      "status": "Rent",
+      "area": "1500 sq ft",
+      "location": "456 Main Street, Suite 200, Los Angeles",
+      "facilities": ["Storefront display windows", "HVAC system", "Security system"]
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/GxPksCF/warehouse.jpg",
+      "estate_title": "Warehouse with Loading Docks",
+      "segment_name": "Warehouses",
+      "description": "Spacious warehouse with multiple loading docks, perfect for logistics or manufacturing operations. This industrial facility offers expansive storage space and convenient access for shipping and receiving goods. Located near major highways, this warehouse provides businesses with efficient transportation links and logistical advantages, making it an ideal choice for companies seeking a strategic distribution center.",
+      "price": "$1,000,000",
+      "status": "Sale",
+      "area": "50000 sq ft",
+      "location": "789 Industrial Avenue, Chicago",
+      "facilities": ["Loading docks", "Warehouse shelving", "Office space"]
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co/BPqFqZ3/office-tower.jpg",
+      "estate_title": "Luxury High-Rise Office Tower",
+      "segment_name": "Office Buildings",
+      "description": "Luxurious office space in a prestigious high-rise tower. This office building offers panoramic views of the city skyline, premium amenities, and concierge services, creating an unparalleled work environment for businesses seeking sophistication and style. With its prime location in the bustling Financial District, this high-rise office tower presents an exceptional opportunity for companies to establish a prestigious corporate headquarters.",
+      "price": "$20,000/month",
+      "status": "Rent",
+      "area": "5000 sq ft",
+      "location": "123 Financial Avenue, San Francisco",
+      "facilities": ["24/7 security", "Fitness center", "Sky lounge"]
+    },
+    {
+    "id": 5,
+    "image": "https://i.ibb.co/TPns2hW/industry.jpg",
+    "estate_title": "Manufacturing Plant with Office Space",
+    "segment_name": "Industrial Facilities",
+    "description": "State-of-the-art manufacturing plant with integrated office space. This industrial facility is equipped with advanced machinery and production lines, ideal for companies involved in manufacturing or assembly processes. The adjoining office space offers a convenient workspace for management and administrative staff. Located in an industrial zone with excellent access to transportation networks, this facility provides businesses with a strategic location to streamline their operations and enhance productivity.",
+    "price": "$3,500,000",
+    "status": "Sale",
+    "area": "75000 sq ft",
+    "location": "239 Industrial Avenue, Silicon Valley",
+    "facilities": ["Manufacturing equipment", "Office space", "Parking lot"]
+  }
+  ,
+    {
+      "id": 6,
+      "image": "https://i.ibb.co/GxPksCF/warehouse.jpg",
+      "estate_title": "Restaurant Space with Outdoor Patio",
+      "segment_name": "Restaurants",
+      "description": "Charming restaurant space with a spacious outdoor patio. This restaurant offers a unique dining experience with its inviting ambiance and alfresco seating, perfect for culinary entrepreneurs looking to create a memorable dining destination. Located in the vibrant Arts District, this restaurant space benefits from a bustling cultural scene and a diverse clientele, making it an ideal location for launching a successful restaurant venture.",
+      "price": "$7,500/month",
+      "status": "Rent",
+      "area": "2500 sq ft",
+      "location": "789 Ocean Avenue, Miami",
+      "facilities": ["Commercial kitchen", "Outdoor seating", "Parking lot"]
+    }
+  ]
