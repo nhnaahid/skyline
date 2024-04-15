@@ -1,12 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import animation from '../assets/animation.gif'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from 'firebase/auth';
+import auth from '../firebase/firebase.config';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const handleRegister = e => {
@@ -19,20 +23,27 @@ const Register = () => {
         const password = form.get('password');
         // password validation
         const regex = /^(?=.*[a-z])(?=.*[A-Z])/;
+        if (password.length < 6 || password.length > 15) {
+            toast.error('Password length should be 6 to 15 characters.')
+            return;
+        }
         if (!regex.test(password)) {
             toast.error('Password must have a lowercase and an uppercase letter.')
             return;
         }
-        if(password.length<6 || password.length>15){
-            toast.error('Password length should be 6 to 15 characters.')
-            return;
-        }
+
         createUser(email, password)
             .then(result => {
+                updateUser(name, photo)
+                    .then()
+                    .catch()
+                toast.success('User Registration Successful.');
                 console.log(result.user);
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
+                toast.error(error.message);
             })
     }
     return (
