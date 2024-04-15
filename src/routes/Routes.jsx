@@ -6,6 +6,7 @@ import FavoriteDeals from "../pages/FavoriteDeals";
 import Login from "../pages/Login";
 import PropertyDetails from "../pages/PropertyDetails";
 import Register from "../pages/Register";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>
       }
     ]
   },

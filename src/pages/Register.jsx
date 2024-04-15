@@ -4,8 +4,6 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateProfile } from 'firebase/auth';
-import auth from '../firebase/firebase.config';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext)
@@ -37,7 +35,7 @@ const Register = () => {
                 updateUser(name, photo)
                     .then()
                     .catch()
-                toast.success('User Registration Successful.');
+                // toast.success('User Registration Successful.');
                 console.log(result.user);
                 navigate(location?.state ? location.state : "/");
             })
