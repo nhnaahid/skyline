@@ -9,7 +9,7 @@ import banner3 from '../../assets/banner3.jpg';
 
 const Banner = ({ scrollToTarget }) => {
     return (
-        <div className='relative '>
+        <div className='relative p-2 md:p-0'>
             <div>
                 <Swiper
                     pagination={{
@@ -22,7 +22,7 @@ const Banner = ({ scrollToTarget }) => {
                     <SwiperSlide ><img className='h-dvh w-full object-cover rounded-xl mt-12' src={banner3} alt="" /></SwiperSlide>
                 </Swiper>
             </div>
-            <div className='w-1/2 absolute top-1/2 left-1/2 z-10 text-white -translate-x-1/2 -translate-y-1/3 space-y-4 bg-black bg-opacity-20 rounded-xl p-5 shadow-xl'>
+            <div className='w-1/2 absolute top-1/2 left-1/2 z-10 text-white -translate-x-1/2 -translate-y-1/3 space-y-4 bg-black bg-opacity-20 rounded-xl p-2 md:p-5 shadow-xl'>
                 <div className='space-y-2'>
                     <h1 className='text-2xl md:text-7xl font-bold'>SkyLine</h1>
                     <h3 className='font-bold'>Real Estate & Properties</h3>

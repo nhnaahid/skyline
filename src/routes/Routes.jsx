@@ -8,41 +8,42 @@ import PropertyDetails from "../pages/PropertyDetails";
 import Register from "../pages/Register";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      children:[
-        {
-            path: "/",
-            element: <Home></Home>,
-            loader:()=> fetch('../commercial.json')
-        },
-        {
-            path: "/update",
-            element: <UpdateProfile></UpdateProfile>
-        },
-        {
-            path: "/favorite",
-            element: <FavoriteDeals></FavoriteDeals>
-        },
-        {
-          path: "/login",
-          element: <Login></Login>
-        },
-        {
-          path: "/property-details/:id",
-          element: <PropertyDetails></PropertyDetails>
-        },
-        {
-          path: "/login",
-          element: <Login></Login>
-        },
-        {
-          path: "/register",
-          element: <Register></Register>
-        }
-      ]
-    },
-  ]);
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch('../commercial.json')
+      },
+      {
+        path: "/update",
+        element: <UpdateProfile></UpdateProfile>
+      },
+      {
+        path: "/favorite",
+        element: <FavoriteDeals></FavoriteDeals>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/property-details/:id",
+        element: <PropertyDetails></PropertyDetails>,
+        loader: () => fetch('../commercial.json')
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      }
+    ]
+  },
+]);
 
-  export default router;
+export default router;
