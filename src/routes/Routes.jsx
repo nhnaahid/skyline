@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import PropertyDetails from "../pages/PropertyDetails";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/update",
-        element: <UpdateProfile></UpdateProfile>
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
       },
       {
         path: "/favorite",
-        element: <FavoriteDeals></FavoriteDeals>,
+        element: <PrivateRoute><FavoriteDeals></FavoriteDeals></PrivateRoute>,
         loader: () => fetch('../commercial.json')
       },
       {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/property-details/:id",
-        element: <PropertyDetails></PropertyDetails>,
+        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
         loader: () => fetch('../commercial.json')
       },
       {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       }
     ]
   },

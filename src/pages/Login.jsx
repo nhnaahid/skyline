@@ -28,7 +28,7 @@ const Login = () => {
                 toast.error(error.message);
             })
     }
-    const handleLoginWithGoogle = e => {
+    const handleLoginWithGoogle = () => {
         loginWithGoogle()
             .then(result => {
                 console.log(result.user);

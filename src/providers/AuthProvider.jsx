@@ -12,8 +12,10 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loadingState, setLoadingState] = useState(true);
     // create user
     const createUser = (email, password) => {
+        setLoadingState(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
     // update user
@@ -25,14 +27,17 @@ const AuthProvider = ({ children }) => {
     }
     // login user
     const loginUser = (email, password) => {
+        setLoadingState(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
     // login with google
     const loginWithGoogle = () => {
+        setLoadingState(true);
         return signInWithPopup(auth, googleProvider)
     }
     // login with facebook
     const loginWithFacebook = () => {
+        setLoadingState(true);
         return signInWithPopup(auth, facebookProvider);
     }
     // observer
@@ -40,6 +45,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             // console.log(currentUser);
             setUser(currentUser);
+            setLoadingState(false);
         });
         return () => {
             unSubscribe();
@@ -47,10 +53,20 @@ const AuthProvider = ({ children }) => {
     }, [])
     // logout
     const logOut = () => {
+        setLoadingState(true);
         return signOut(auth);
     }
 
-    const authInfo = { user, createUser, loginUser, loginWithGoogle, loginWithFacebook, logOut, updateUser };
+    const authInfo = {
+        user,
+        loadingState,
+        createUser,
+        loginUser,
+        loginWithGoogle,
+        loginWithFacebook,
+        logOut,
+        updateUser
+    };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
