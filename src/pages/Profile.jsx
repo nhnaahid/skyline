@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
     return (
         <div className="bg-base-200 p-0 md:p-5 overflow-x-hidden">
+            <Helmet>
+                <title>SkyLine | Profile</title>
+            </Helmet>
             <div className="w-full md:w-3/5 bg-white mx-auto flex flex-col items-center">
                 <h1 className="text-2xl font-bold border-b p-3 text-center md:text-start">User Details</h1>
                 <div className="avatar flex justify-center items-center mt-5">

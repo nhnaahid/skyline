@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { saveData } from "../utility/localstorage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const PropertyDetails = () => {
     const properties = useLoaderData();
@@ -26,6 +27,9 @@ const PropertyDetails = () => {
     }
     return (
         <div className="bg-base-200">
+            <Helmet>
+                <title>SkyLine | {estate_title}</title>
+            </Helmet>
             <div className="flex flex-col md:flex-row gap-7 p-5 pt-16">
                 <div className="w-full md:w-3/5 space-y-10">
                     <div className="flex flex-col md:flex-row justify-between">

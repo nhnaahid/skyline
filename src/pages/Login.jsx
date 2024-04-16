@@ -2,14 +2,17 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import animation from '../assets/animation.gif'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
     const { loginUser, loginWithGoogle, loginWithFacebook } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
     const handleLogin = e => {
@@ -54,6 +57,9 @@ const Login = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>SkyLine | Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img src={animation} alt="" />
@@ -67,15 +73,23 @@ const Login = () => {
                             </label>
                             <input type="email" placeholder="email" name='email' className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                        <div className='relative'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type={showPassword ? 'password' : 'text'} name='password' placeholder="password" className="input input-bordered" required />
+                                <label className="label">
+                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                </label>
+                            </div>
+                            <div onClick={() => setShowPassword(!showPassword)} className='absolute bottom-12 right-2 text-lg'>
+                                {
+                                    showPassword ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash>
+                                }
+                            </div>
                         </div>
+
                         <div className="form-control mt-6">
                             <button className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white border-none">Login</button>
                         </div>

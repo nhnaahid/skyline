@@ -3,6 +3,7 @@ import update from '../assets/update.gif'
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProfile = () => {
     const { user, updateUser } = useContext(AuthContext);
@@ -35,6 +36,9 @@ const UpdateProfile = () => {
     }
     return (
         <div className="bg-base-200 p-5">
+            <Helmet>
+                <title>SkyLine | Update Profile</title>
+            </Helmet>
             <div className="w-full md:w-3/5 mx-auto bg-white ">
                 <h1 className="text-2xl font-bold border-b p-3 text-center md:text-start">Update Profile</h1>
                 <div>

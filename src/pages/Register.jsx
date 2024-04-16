@@ -4,13 +4,14 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -46,6 +47,9 @@ const Register = () => {
     }
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>SkyLine | Register</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img src={animation} alt="" />
@@ -71,12 +75,20 @@ const Register = () => {
                             </label>
                             <input type="text" name='photo' placeholder="photo url" className="input input-bordered" required />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                        <div className='relative'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type={showPassword ? 'password' : 'text'} name='password' placeholder="password" className="input input-bordered" required />
+                            </div>
+                            <div onClick={() => setShowPassword(!showPassword)} className='absolute bottom-4 right-2 text-lg'>
+                                {
+                                    showPassword ? <FaRegEye></FaRegEye> : <FaRegEyeSlash></FaRegEyeSlash>
+                                }
+                            </div>
                         </div>
+
                         <div className="form-control mt-6">
                             <button className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white border-none">Register</button>
                         </div>
