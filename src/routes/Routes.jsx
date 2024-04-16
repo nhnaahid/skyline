@@ -24,7 +24,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/favorite",
-        element: <FavoriteDeals></FavoriteDeals>
+        element: <FavoriteDeals></FavoriteDeals>,
+        loader: () => fetch('../commercial.json')
       },
       {
         path: "/login",

@@ -2,6 +2,9 @@ import { IoLocationOutline, IoCheckbox } from "react-icons/io5";
 import { useParams, useLoaderData } from 'react-router-dom';
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { saveData } from "../utility/localstorage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PropertyDetails = () => {
     const properties = useLoaderData();
@@ -12,6 +15,15 @@ const PropertyDetails = () => {
     const propertyDetails = properties.find(property => property.id === idInt);
     // console.log(propertyDetails);
     const { image, estate_title, segment_name, price, status, area, location, description, facilities } = propertyDetails;
+    const handleFavorite = () => {
+        const isExist = saveData('favorite', idInt);
+        if (isExist) {
+            toast.error('Property already in favorite deals.');
+        }
+        else {
+            toast.success('Property added to favorite deals.');
+        }
+    }
     return (
         <div className="bg-base-200">
             <div className="flex flex-col md:flex-row gap-7 p-5 pt-16">
@@ -56,7 +68,9 @@ const PropertyDetails = () => {
                                     facilities.map((facility, idx) => <div className="flex items-center gap-2" key={idx}><IoCheckbox className="text-lg fill-emerald-500"></IoCheckbox><p>{facility}</p></div>)
                                 }
                             </div>
-
+                            <div className="w-full flex items-center justify-center">
+                                <button onClick={handleFavorite} className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white mt-5">Add to Favorite</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -78,6 +92,18 @@ const PropertyDetails = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
 
     );
