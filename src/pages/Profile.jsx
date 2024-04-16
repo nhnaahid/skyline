@@ -6,39 +6,26 @@ import { Helmet } from "react-helmet-async";
 const Profile = () => {
     const { user } = useContext(AuthContext);
     return (
-        <div className="bg-base-200 p-0 md:p-5 overflow-x-hidden">
+        <div className="bg-base-200 p-0 md:p-5">
             <Helmet>
                 <title>SkyLine | Profile</title>
             </Helmet>
-            <div className="w-full md:w-3/5 bg-white mx-auto flex flex-col items-center">
-                <h1 className="text-2xl font-bold border-b p-3 text-center md:text-start">User Details</h1>
+            <div className="w-full md:w-3/4 bg-white mx-auto">
+                <h1 className="text-2xl font-bold p-3 border-b text-center">User Details</h1>
                 <div className="avatar flex justify-center items-center mt-5">
-                    <div className="w-24 md:w-36 mask mask-hexagon">
+                    <div className="w-24 md:w-40 mask mask-hexagon">
                         <img src={user?.photoURL || 'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'} />
                     </div>
                 </div>
-                <div className="mt-5">
-                    <table className="table">
-                        <tbody>
-                            {/* row 1 */}
-                            <tr className="text-center md:text-lg">
-                                <td className="font-bold">Name:</td>
-                                <td>{user?.displayName}</td>
-                            </tr>
-                            {/* row 2 */}
-                            <tr className="text-center md:text-lg">
-                                <td className="font-bold">Email: </td>
-                                <td>{user?.email}</td>
-                            </tr>
-                            {/* row 3 */}
-                            <tr className="text-center md:text-lg">
-                                <td className="font-bold">Photo URL: </td>
-                                <td>{user?.photoURL}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="w-full md:w-4/5 mx-auto overflow-hidden my-5 pb-5 text-xs md:text-base px-1 text-center">
+                    <p className="border-b py-2 font-bold">Name: <span className="font-normal ml-1 md:ml-3">{user.displayName}</span></p>
+                    <p className="border-b py-2 font-bold">Email: <span className="font-normal ml-1 md:ml-3">{user.email}</span></p>
+                    <p className="py-2 font-bold">Photo URL: <span className="font-normal ml-1 md:ml-3">{user.photoURL}</span></p>
                 </div>
-                <Link to="/update" className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white my-5 w-fit">Edit Profile</Link>
+                <div className="w-full flex justify-center">
+                    <Link to="/update" className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white w-fit md:mb-5">Edit Profile</Link>
+                </div>
+
             </div>
         </div>
     );

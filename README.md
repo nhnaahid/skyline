@@ -26,6 +26,7 @@ Welcome to SkyLine-Real Estate & Properties Web Application! This application is
 - HTML5
 - CSS3
 - Tailwind CSS
+- daisyUI
 - JavaScript
 - React.js
 - Local storage as database.
