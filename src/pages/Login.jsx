@@ -7,8 +7,9 @@ import { AuthContext } from '../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, loginWithGoogle, loginWithFacebook } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const handleLogin = e => {
@@ -20,12 +21,36 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user);
-                // toast.success('User Login Successful.');
+                toast.success('User Login Successful.');
                 navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 toast.error(error.message);
             })
+    }
+    const handleLoginWithGoogle = e => {
+        loginWithGoogle()
+            .then(result => {
+                console.log(result.user);
+                toast.success('User Login Successful.');
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
+
+    }
+    const handleLoginWithFacebook = () => {
+        loginWithFacebook()
+            .then(result => {
+                console.log(result.user);
+                toast.success('User Login Successful.');
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
+
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -60,8 +85,8 @@ const Login = () => {
                         <div className='space-y-2'>
                             <p className='text-center'>Login With</p>
                             <div className='flex items-center justify-center gap-2'>
-                                <button className="btn"><FcGoogle></FcGoogle>Google</button>
-                                <button className="btn"><FaFacebookF></FaFacebookF>Facebook</button>
+                                <button onClick={handleLoginWithGoogle} className="btn"><FcGoogle></FcGoogle>Google</button>
+                                <button onClick={handleLoginWithFacebook} className="btn"><FaFacebookF></FaFacebookF>Facebook</button>
                             </div>
                         </div>
                     </form>
