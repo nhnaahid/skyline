@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import animation from '../assets/animation.gif'
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF, FaGithub } from "react-icons/fa";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
-    const { loginUser, loginWithGoogle, loginWithFacebook } = useContext(AuthContext);
+    const { loginUser, loginWithGoogle, loginWithFacebook, loginWithGithub } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
@@ -54,6 +54,18 @@ const Login = () => {
             })
 
     }
+    const handleLoginWithGithub = () => {
+        loginWithGithub()
+            .then(result => {
+                console.log(result.user);
+                toast.success('User Login Successful.');
+                navigate(location?.state ? location.state : "/");
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <Helmet>
@@ -95,11 +107,12 @@ const Login = () => {
                         <div>
                             <p className='mt-1'>New user? <Link to="/register" className='text-blue-600'>Register</Link> </p>
                         </div>
-                        <div className='space-y-2'>
-                            <p className='text-center'>Login With</p>
+                        <div className='space-y-3'>
+                            <p className='text-center font-bold'>Login With</p>
                             <div className='flex items-center justify-center gap-2'>
-                                <button onClick={handleLoginWithGoogle} className="btn"><FcGoogle></FcGoogle>Google</button>
-                                <button onClick={handleLoginWithFacebook} className="btn"><FaFacebookF></FaFacebookF>Facebook</button>
+                                <button onClick={handleLoginWithGoogle} className="btn btn-outline text-xl px-3"><FcGoogle></FcGoogle></button>
+                                <button onClick={handleLoginWithFacebook} className="btn btn-outline text-xl px-3"><FaFacebookF></FaFacebookF></button>
+                                <button onClick={handleLoginWithGithub} className="btn btn-outline text-xl px-3"><FaGithub></FaGithub></button>
                             </div>
                         </div>
                     </form>
