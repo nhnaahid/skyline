@@ -4,8 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
@@ -106,18 +105,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </div>
     );
 };

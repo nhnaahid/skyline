@@ -1,17 +1,15 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import animation from '../assets/animation.gif'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext)
-    const [showPassword, setShowPassword] = useState(true);
     const navigate = useNavigate();
-    const location = useLocation();
+    const { user, setUser, createUser, updateUser } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(true);
     const handleRegister = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -34,11 +32,11 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 updateUser(name, photo)
-                    .then()
+                    .then(() => setUser({ ...user, displayName: name, photoURL: photo }))
                     .catch()
-                // toast.success('User Registration Successful.');
+                toast.success('User Registration Successful.');
                 console.log(result.user);
-                navigate(location?.state ? location.state : "/");
+                navigate("/")
             })
             .catch(error => {
                 console.log(error);
@@ -98,18 +96,6 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </div>
     );
 };

@@ -1,12 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useContext, } from 'react';
 import update from '../assets/update.gif'
 import { AuthContext } from '../providers/AuthProvider';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 
 const UpdateProfile = () => {
-    const { user, updateUser } = useContext(AuthContext);
+    const { user, setUser, updateUser } = useContext(AuthContext);
     console.log(user);
     const handleUpdate = e => {
         e.preventDefault();
@@ -14,7 +13,7 @@ const UpdateProfile = () => {
         let name = form.get('name');
         let photo = form.get('photo');
         // console.log(name, photo);
-        if(name==='' && photo===''){
+        if (name === '' && photo === '') {
             toast.error('Please provide necessary data.');
             return;
         }
@@ -26,7 +25,8 @@ const UpdateProfile = () => {
         }
         console.log(name);
         updateUser(name, photo)
-            .then(result => {
+            .then(() => {
+                setUser({ ...user, displayName: name, photoURL: photo });
                 toast.success('User profile updated successfully.');
                 e.target.reset();
             })
@@ -62,18 +62,6 @@ const UpdateProfile = () => {
                     </div>
                 </form>
             </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </div>
     );
 };

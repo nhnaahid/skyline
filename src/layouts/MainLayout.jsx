@@ -1,3 +1,5 @@
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
@@ -12,6 +14,18 @@ const MainLayout = () => {
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };
