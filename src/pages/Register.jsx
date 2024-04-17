@@ -32,7 +32,7 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 updateUser(name, photo)
-                    .then(() => setUser({ ...user, displayName: name, email: email, photoURL: photo }))
+                    .then(() => setUser({ ...user, displayName: name, photoURL: photo }))
                     .catch()
                 toast.success('User Registration Successful.');
                 console.log(result.user);

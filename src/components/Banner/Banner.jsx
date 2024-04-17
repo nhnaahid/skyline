@@ -27,7 +27,7 @@ const Banner = ({ scrollToTarget }) => {
                     <h1 className='text-2xl md:text-7xl font-bold'>SkyLine</h1>
                     <h3 className='font-bold md:text-lg'>Real Estate & Properties</h3>
                 </div>
-                <p className='text-gray-200'>Welcome to a world where dreams become addresses, and every property holds the promise of a brighter tomorrow.</p>
+                <p className='text-gray-200 text-xs md:text-base'>Welcome to a world where dreams become addresses, and every property holds the promise of a brighter tomorrow.</p>
                 <button onClick={scrollToTarget} className="btn btn-xs sm:btn-sm md:btn-md bg-emerald-500 hover:bg-emerald-400 text-white border-none">View Deals</button>
             </div>
         </div>
